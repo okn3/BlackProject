@@ -182,6 +182,7 @@
 }
 
 int black_count = 0;
+int black_sum = 0;
 
 -(void) onPostExecute:(HVC_RES *)result errcode:(HVC_ERRORCODE)err status:(unsigned char)outStatus
 {
@@ -198,11 +199,13 @@ int black_count = 0;
         for(i = 0; i < result.sizeFace; i++){
             FaceResult *fd = [result face:i];
             
-            if (fd.exp.degree > 90) {
-                black_count +=1;
-            }else{
-                black_count = 0;
-            }
+//            if (fd.exp.degree > 90) {
+//                black_count +=1;
+//            }else{
+//                black_count = 0;
+//            }
+            black_count += 1;
+            black_sum += fd.exp.degree;
             
             // 表情推定
             if((result.executedFunc & HVC_ACTIV_EXPRESSION_ESTIMATION) != 0){
@@ -237,15 +240,22 @@ int black_count = 0;
     }
     _ResultTextView.text = resStr;
 //    NSLog
-    if (black_count == 2) {
-        _resultLabel.text = @"OK!";
-        [self.player play];
-        black_count = 0;
-    }else if (black_count == 1){
-        _resultLabel.text = @"キープ！";
-    }
-    else{
-        _resultLabel.text = @"笑って";
+//    if (black_count == 5) {
+//        _resultLabel.text = @"スコア：%d",sum;
+//        [self.player play];
+//        black_count = 0;
+//    }else if (black_count == 1){
+//        _resultLabel.text = @"キープ！";
+//    }
+//    else{
+//        _resultLabel.text = @"笑って";
+//    }
+    
+    //5回の平均値算出
+    if (black_count == 5) {
+                _resultLabel.text = @"笑顔スコア：%d",black_sum/black_count;
+                [self.player play];
+                black_count = 0;
     }
 
     if ( Status == 2 ) {
