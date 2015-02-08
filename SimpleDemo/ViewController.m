@@ -47,7 +47,7 @@
     _ResultTextView.text = @"";
     
     // リソースファイルをAVAudioPlayerにセット。
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"correct5" ofType:@"mp3"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"out" ofType:@"mp3"];
     NSURL *url = [NSURL fileURLWithPath: path];
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL: url error:nil];
 }
@@ -275,11 +275,14 @@ int black_ave;
 // HTTP-GET
 - (void)httpGet:(int)Score {
     // Create the url-request.
-
+    
+    //Debug
+//    NSString *str =
+//    [NSString stringWithFormat:@"http://127.0.0.1:8080/%d", Score];
     NSString *str =
-    [NSString stringWithFormat:@"http://127.0.0.1:8080/%d", Score];
+    [NSString stringWithFormat:@"http://ec2-54-64-239-254.ap-northeast-1.compute.amazonaws.com:1337/submit?m=2&score=%d", Score];
     NSURL *url = [NSURL URLWithString:str];
-        NSLog(@"test:%@",url);
+        NSLog(@"requestURL:%@",url);
 //    NSURL *url = [NSURL URLWithString:str];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     

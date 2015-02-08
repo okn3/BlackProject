@@ -18,6 +18,7 @@
 		0D93D39519F634BB003046C1 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D93D39419F634BB003046C1 /* CoreBluetooth.framework */; };
 		795045EA1A85E352005BD535 /* correct5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 795045E91A85E352005BD535 /* correct5.mp3 */; };
 		795045EC1A85E412005BD535 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 795045EB1A85E412005BD535 /* AVFoundation.framework */; };
+		795DCA0F1A8730F600F9FA00 /* out.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 795DCA0E1A8730F600F9FA00 /* out.mp3 */; };
 		E4B5F7431A1C910300863F7D /* libSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B5F7421A1C910300863F7D /* libSDK.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		0D93D39419F634BB003046C1 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		795045E91A85E352005BD535 /* correct5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = correct5.mp3; path = ../../../../Desktop/correct5.mp3; sourceTree = "<group>"; };
 		795045EB1A85E412005BD535 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		795DCA0E1A8730F600F9FA00 /* out.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = out.mp3; path = ../../../../Downloads/out.mp3; sourceTree = "<group>"; };
 		E4B5F7421A1C910300863F7D /* libSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDK.a; path = bin/libSDK.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 		0D83AC1919F4D7540016DC1A /* SimpleDemo */ = {
 			isa = PBXGroup;
 			children = (
+				795DCA0E1A8730F600F9FA00 /* out.mp3 */,
 				795045E91A85E352005BD535 /* correct5.mp3 */,
 				0D93D39219F62A30003046C1 /* SimpleDemo.entitlements */,
 				0D83AC1E19F4D7540016DC1A /* AppDelegate.h */,
@@ -230,6 +233,7 @@
 			files = (
 				0D83AC2619F4D7540016DC1A /* Main.storyboard in Resources */,
 				795045EA1A85E352005BD535 /* correct5.mp3 in Resources */,
+				795DCA0F1A8730F600F9FA00 /* out.mp3 in Resources */,
 				0D83AC2B19F4D7540016DC1A /* LaunchScreen.xib in Resources */,
 				0D83AC2819F4D7540016DC1A /* Images.xcassets in Resources */,
 			);
