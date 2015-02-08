@@ -261,6 +261,7 @@ int black_ave;
         _ResultTextView.text = resStr;
         black_count = 0;
         black_sum = 0;
+        [self httpGet:black_ave];
         return;
     }
 
@@ -269,6 +270,34 @@ int black_ave;
             [self.HvcBLE Execute:ExecuteFlag result:result];
         });
     }
+}
+
+// HTTP-GET
+- (void)httpGet:(int)Score {
+    // Create the url-request.
+
+    NSString *str =
+    [NSString stringWithFormat:@"http://127.0.0.1:8080/%d", Score];
+    NSURL *url = [NSURL URLWithString:str];
+        NSLog(@"test:%@",url);
+//    NSURL *url = [NSURL URLWithString:str];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    // Set the method(HTTP-GET)
+    [request setHTTPMethod:@"GET"];
+    
+    // Send the url-request.
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               if (data) {
+                                   NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                   NSLog(@"result: %@", result);
+                               } else {
+                                   NSLog(@"error: %@", error);
+                               }
+                           }];
+    
 }
 
 @end
