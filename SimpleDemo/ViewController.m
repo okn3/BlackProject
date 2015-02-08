@@ -183,6 +183,7 @@
 
 int black_count = 0;
 int black_sum = 0;
+int black_ave;
 
 -(void) onPostExecute:(HVC_RES *)result errcode:(HVC_ERRORCODE)err status:(unsigned char)outStatus
 {
@@ -252,10 +253,15 @@ int black_sum = 0;
 //    }
     
     //5回の平均値算出
-    if (black_count == 5) {
-                _resultLabel.text = @"笑顔スコア：%d",black_sum/black_count;
-                [self.player play];
-                black_count = 0;
+    if (black_count == 3) {
+                black_ave = black_sum/black_count;
+        resStr = [resStr stringByAppendingString:[NSString stringWithFormat:@"笑顔スコア%d",black_ave]];
+        NSLog(@"笑顔スコア%d",black_ave);
+        [self.player play];
+        _ResultTextView.text = resStr;
+        black_count = 0;
+        black_sum = 0;
+        return;
     }
 
     if ( Status == 2 ) {
